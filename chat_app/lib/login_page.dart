@@ -1,3 +1,4 @@
+import 'package:chat_app/chat_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -5,10 +6,16 @@ class LoginPage extends StatelessWidget {
 
   final _formkey = GlobalKey<FormState>();
 
-  void loginUser() {
+  void loginUser(context) {
     if (_formkey.currentState != null && _formkey.currentState!.validate()) {
       print('username: ${userNameController.text}');
       print('password: ${passwordController.text}');
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ChatPage()
+          ));
       print('Logging in successful!');
     } else {
       print('Logging in failed!');
@@ -55,7 +62,9 @@ class LoginPage extends StatelessWidget {
                   children: [
                     TextFormField(
                       validator: (value) {
-                        if (value != null && value.isNotEmpty && value.length < 5) {
+                        if (value != null &&
+                            value.isNotEmpty &&
+                            value.length < 5) {
                           return "Your username should be more than 5 characters";
                         } else if (value != null && value.isEmpty) {
                           return "Please type your username";
@@ -88,19 +97,21 @@ class LoginPage extends StatelessWidget {
                 height: 24,
               ),
               ElevatedButton(
-                  onPressed: loginUser,
+                  onPressed: (){
+                    loginUser(context);
+                  },
                   child: Text(
                     'Login',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
                   )),
               InkWell(
-                splashColor: Colors.red,
-                onDoubleTap: () {
-                  print('Double tapped!');
-                },
-                onLongPress: () {
-                  print('Long pressed!');
-                },
+                // splashColor: Colors.red,
+                // onDoubleTap: () {
+                //   print('Double tapped!');
+                // },
+                // onLongPress: () {
+                //   print('Long pressed!');
+                // },
                 onTap: () {
                   // todo: navigate to browser
                   print('Link clicked!');
