@@ -7,8 +7,8 @@ class LoginPage extends StatelessWidget {
 
   void loginUser() {
     if (_formkey.currentState != null && _formkey.currentState!.validate()) {
-      print('username: ' + userNameController.text);
-      print('password: ' + passwordController.text);
+      print('username: ${userNameController.text}');
+      print('password: ${passwordController.text}');
       print('Logging in successful!');
     } else {
       print('Logging in failed!');
