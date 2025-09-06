@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
 
   void loginUser(){
+    print('username: ' + userNameController.text);
+    print('password: ' + passwordController.text);
     print('Logging in successful!');
   }
+
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +42,29 @@ class LoginPage extends StatelessWidget {
                 'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
                 height: 200,
               ),
+
+              TextField(
+                controller: userNameController,
+                decoration: InputDecoration(
+                  hintText: 'Add your username',
+                  hintStyle: TextStyle(color: Colors.blueGrey),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Type your password',
+                  hintStyle: TextStyle(color: Colors.blueGrey),
+                  border: OutlineInputBorder(),
+                ),
+              ),
               ElevatedButton(
                   onPressed: loginUser,
                   child: Text(
-                    'Click Me!',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),
+                    'Login',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
                   )),
               InkWell(
                 splashColor: Colors.red,
