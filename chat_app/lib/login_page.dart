@@ -1,4 +1,5 @@
 import 'package:chat_app/chat_page.dart';
+import 'package:chat_app/utils/spaces.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -73,9 +74,7 @@ class LoginPage extends StatelessWidget {
                       },
                       controller: userNameController,
                     ),
-                    SizedBox(
-                      height: 24,
-                    ),
+                    verticalSpacing(24),
                     LoginTextField(
                       hasAsterisks: true,
                       controller: passwordController,
@@ -84,9 +83,7 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 24,
-              ),
+              verticalSpacing(24),
               ElevatedButton(
                   onPressed: () {
                     loginUser(context);
@@ -95,6 +92,7 @@ class LoginPage extends StatelessWidget {
                     'Login',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
                   )),
+              verticalSpacing(24),
               GestureDetector(
                 onTap: () {
                   //todo: Navigate to browser
