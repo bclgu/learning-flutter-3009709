@@ -29,6 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  json_annotation: ^4.9.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -36,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.2.1
   url_launcher: ^6.3.1
+  http: any
   social_media_buttons:
     git:
       url: https://github.com/nrubin29/social_media_buttons
@@ -51,6 +53,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  build_runner: ^2.6.0
+  json_serializable: ^6.11.1
 dependency_overrides:
   typed_data: 1.3.0
 
