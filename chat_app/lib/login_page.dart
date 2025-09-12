@@ -1,4 +1,3 @@
-import 'package:chat_app/utils/brand_color.dart';
 import 'package:chat_app/utils/spaces.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
