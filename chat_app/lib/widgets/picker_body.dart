@@ -11,36 +11,44 @@ class NetworkImagePickerBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<PixelfordImage>>(
-        future: _imageRepo.getNetworkImages(),
-        builder: (BuildContext context,
-            AsyncSnapshot<List<PixelfordImage>> snapshot) {
-          if (snapshot.hasData)
-            return GridView.builder(
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  crossAxisSpacing: 2,
-                  mainAxisSpacing: 2,
-                  maxCrossAxisExtent: MediaQuery.of(context).size.width / 2,
-                ),
-                itemCount: snapshot.data!.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                      onTap: () {
-                        onImageSelected(snapshot.data![index].urlSmallSize);
-                        // Navigator.pop(context);
-                      },
-                      child: Image.network(snapshot.data![index].urlSmallSize));
-                });
-          else if (snapshot.hasError){
-            return Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Text('This is the error: ${snapshot.error}'),
-            );
-          }
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(child: CircularProgressIndicator()),
-            );
-        });
+    return Container(
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        // borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+      ),
+      child: FutureBuilder<List<PixelfordImage>>(
+          future: _imageRepo.getNetworkImages(),
+          builder: (BuildContext context,
+              AsyncSnapshot<List<PixelfordImage>> snapshot) {
+            if (snapshot.hasData)
+              return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    crossAxisSpacing: 2,
+                    mainAxisSpacing: 2,
+                    maxCrossAxisExtent: MediaQuery.of(context).size.width / 2,
+                  ),
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                        onTap: () {
+                          onImageSelected(snapshot.data![index].urlSmallSize);
+                          // Navigator.pop(context);
+                        },
+                        child: Image.network(snapshot.data![index].urlSmallSize));
+                  });
+            else if (snapshot.hasError){
+              return Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Text('This is the error: ${snapshot.error}'),
+              );
+            }
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(child: CircularProgressIndicator()),
+              );
+          }),
+    );
   }
 }
