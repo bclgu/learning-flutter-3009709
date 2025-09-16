@@ -43,6 +43,7 @@ dependencies:
       url: https://github.com/nrubin29/social_media_buttons
       ref: null-safety
   provider: ^6.1.5+1
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
