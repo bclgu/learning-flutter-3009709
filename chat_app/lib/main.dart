@@ -13,6 +13,9 @@ void main() async {
   ));
 }
 
+//TODO: fix broken http API in web and desktop apps
+//TODO: fix endless logout loop in iOS app
+
 class ChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
